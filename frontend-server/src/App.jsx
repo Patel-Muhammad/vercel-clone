@@ -135,7 +135,7 @@ function App() {
       </div>
       {deployedUrl && (
         <div className="p-5 md:w-[50vw] w-[85vw] md:h-14 absolute left-1/2 bottom-32 dep-cls flex items-center justify-between card">
-          {domain}.deployfor.me
+          http://{domain}.deployfor.me
           <div className="cursor-pointer" onClick={copyUrlLink}>
             <MdOutlineContentCopy />
           </div>
