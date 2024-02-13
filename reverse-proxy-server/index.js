@@ -11,7 +11,8 @@ const proxy = httpProxy.createProxyServer();
 app.use((req, res) => {
     console.log('Request received....')
     const hostName = req.headers.host;
-    console.log('hostName ==>', req.headers);
+    console.log('req headers ==>', req.headers);
+    console.log('hostName ==>', hostName);
     const subDomain = hostName?.split('.')[0];
     const resolvesTo = `${BASE_PATH}/${subDomain}`;
     return proxy.web(req, res, { target: resolvesTo, changeOrigin: true});
