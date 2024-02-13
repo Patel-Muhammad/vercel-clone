@@ -1,6 +1,7 @@
 const express = require('express');
 const httpProxy = require('http-proxy');
-require('dotenv').config();
+const dotenv = require('dotenv');
+dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 8001;
