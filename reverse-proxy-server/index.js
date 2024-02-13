@@ -10,13 +10,8 @@ const BASE_PATH = process.env.BASE_URL;
 const proxy = httpProxy.createProxyServer();
 
 app.use((req, res) => {
-    console.log('Request received....')
     const hostName = req.headers.host;
-    console.log('req headers ==>', req.headers);
-    console.log('hostName ==>', hostName);
-    console.log('BASE_PATH ==>', BASE_PATH);
     const subDomain = hostName.split('.')[0];
-    console.log('subDomain ==>', subDomain);
     const resolvesTo = `${BASE_PATH}/${subDomain}`;
     return proxy.web(req, res, { target: resolvesTo, changeOrigin: true});
 });
