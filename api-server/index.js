@@ -20,7 +20,7 @@ app.post("/api/project", async (req, res) => {
   const { gitURL, slug } = req.body;
   const projectSlug = slug ? slug : generateSlug();
 
-  const dockerRunCommand = `docker run -d --rm --name ${projectSlug} -e repoUrl=${gitURL} -e projectid=${projectSlug} -e cstring="${cstring}" ${containerImage}`;
+  const dockerRunCommand = `docker run --rm --name ${projectSlug} -e repoUrl=${gitURL} -e projectid=${projectSlug} -e cstring="${cstring}" ${containerImage}`;
   console.log(dockerRunCommand);
   const dockerProcess = spawn("sh", ["-c", dockerRunCommand], {
     stdio: "pipe",
