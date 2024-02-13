@@ -1,7 +1,6 @@
 const express = require("express");
 const { generateSlug } = require("random-word-slugs");
 const { spawn } = require("child_process");
-const Redis = require("ioredis");
 const cors = require('cors');
 const dotenv = require('dotenv');
 dotenv.config();
