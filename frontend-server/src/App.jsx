@@ -16,6 +16,7 @@ function App() {
   const [confetti, setConfetti] = useState(false);
 
   const onChangeAnything = (e, setTheChangeValue) => {
+    setDeployedUrl("");
     setTheChangeValue(e.target.value);
   };
 
@@ -134,8 +135,8 @@ function App() {
         </button>
       </div>
       {deployedUrl && (
-        <div className="p-5 md:w-[50vw] w-[85vw] md:h-14 absolute left-1/2 bottom-32 dep-cls flex items-center justify-between card">
-          http://{domain}.deployfor.me
+        <div className="p-5  md:w-[50vw] w-[85vw] md:h-14 absolute left-1/2 bottom-32 dep-cls flex items-center justify-between card">
+          <code>https://{domain}.deployfor.me</code> 
           <div className="cursor-pointer" onClick={copyUrlLink}>
             <MdOutlineContentCopy />
           </div>
