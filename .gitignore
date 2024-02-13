@@ -1,5 +1,8 @@
 /api-server/node_modules
 /build-server/node_modules
 /frontend-server/node_modules
+/reverse-proxy-server/node_modules
 /api-server/.env
 /frontend-server/.env
+/reverse-proxy-server/.env
+```
