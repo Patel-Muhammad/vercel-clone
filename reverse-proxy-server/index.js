@@ -13,6 +13,7 @@ app.use((req, res) => {
     const hostName = req.headers.host;
     console.log('req headers ==>', req.headers);
     console.log('hostName ==>', hostName);
+    console.log('BASE_PATH ==>', BASE_PATH);
     const subDomain = hostName.split('.')[0];
     console.log('subDomain ==>', subDomain);
     const resolvesTo = `${BASE_PATH}/${subDomain}`;
