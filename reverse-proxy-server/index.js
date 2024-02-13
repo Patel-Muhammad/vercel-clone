@@ -13,7 +13,8 @@ app.use((req, res) => {
     const hostName = req.headers.host;
     console.log('req headers ==>', req.headers);
     console.log('hostName ==>', hostName);
-    const subDomain = hostName?.split('.')[0];
+    const subDomain = hostName.split('.')[0];
+    console.log('subDomain ==>', subDomain);
     const resolvesTo = `${BASE_PATH}/${subDomain}`;
     return proxy.web(req, res, { target: resolvesTo, changeOrigin: true});
 });
