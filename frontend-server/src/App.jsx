@@ -25,8 +25,8 @@ function App() {
       toast.error("Please fill in the fields");
       return false;
     }
-    if (domain.includes(" ") || url.includes(" ")) {
-      toast.error("Domain cannot contain spaces");
+    if (domain.includes(" ") || url.includes(" ") || url.includes(".")) {
+      toast.error("Domain cannot contain spaces or dot");
       return false;
     }
     if (!url.startsWith("https://github.com")) {
