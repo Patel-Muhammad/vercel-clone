@@ -7,7 +7,6 @@ import { MdOutlineContentCopy } from "react-icons/md";
 import Confetti from "react-confetti";
 import { RotatingLines } from "react-loader-spinner";
 
-
 function App() {
   const [loading, setLoading] = useState(false);
   const [url, setUrl] = useState("");
@@ -63,6 +62,11 @@ function App() {
           slug: domain,
         })
         .then((res) => {
+          if (res.status == 400) {
+            toast.error(res.data.message);
+            setLoading(false);
+            return;
+          }
           toast.info("Validation passed, deploying...");
           setTimeout(() => {
             setDeployedUrl(`${domain}.deployfor.me`);
@@ -73,6 +77,11 @@ function App() {
           }, 10000);
         })
         .catch((err) => {
+          if (res.status == 400) {
+            toast.error(res.data.message);
+            setLoading(false);
+            return;
+          }
           toast.error("An error occurred. Please try again later");
           setLoading(false);
         });
@@ -85,7 +94,9 @@ function App() {
         deployfor.me 🚀
       </div>
       <div className="input-container w-[85vw] h-[40vh] md:h-[45vh] md:w-[50vw] card glow">
-        <label className="md:text-3xl text-xl font-bold">Host your React.JS project</label>
+        <label className="md:text-3xl text-xl font-bold">
+          Host your React.JS project
+        </label>
         <div className="flex flex-col justify-between items-center w-4/5">
           <div className="w-full md:flex-row flex-col flex items-start md:items-center justify-between mb-6">
             <div className="md:text-xl mr-3">Project URL: </div>
@@ -124,7 +135,7 @@ function App() {
               strokeWidth="5"
               animationDuration="0.75"
               ariaLabel="rotating-lines-loading"
-              wrapperStyle={{color:"black"}}
+              wrapperStyle={{ color: "black" }}
               wrapperClass="text-black"
             />
           ) : (
@@ -136,7 +147,7 @@ function App() {
       </div>
       {deployedUrl && (
         <div className="p-5  md:w-[50vw] w-[85vw] md:h-14 absolute left-1/2 bottom-32 dep-cls flex items-center justify-between card">
-          <code>https://{domain}.deployfor.me</code> 
+          <code>https://{domain}.deployfor.me</code>
           <div className="cursor-pointer" onClick={copyUrlLink}>
             <MdOutlineContentCopy />
           </div>
