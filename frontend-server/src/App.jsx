@@ -6,6 +6,8 @@ import axios from "axios";
 import { MdOutlineContentCopy } from "react-icons/md";
 import Confetti from "react-confetti";
 import { RotatingLines } from "react-loader-spinner";
+import { FaGithub } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -90,7 +92,15 @@ function App() {
 
   return (
     <div className="bg-image">
-      <div className="heading text-nowrap font-black text-4xl absolute left-1/2 top-56 md:top-40 md:text-6xl">
+      <div className="flex justify-between" >
+      <a href="https://www.linkedin.com/in/patel-muhammad/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-100 md:text-4xl md:p-5 text-2xl p-3 cursor-pointer">
+        <FaLinkedin />
+      </a>
+      <a href="https://github.com/Patel-Muhammad/vercel-clone" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-100 md:text-4xl md:p-5 text-2xl p-3 cursor-pointer">
+        <FaGithub />
+      </a>
+      </div>
+      <div className="heading text-nowrap font-black text-4xl absolute left-1/2 top-40 md:top-40 md:text-6xl">
         deployfor.me 🚀
       </div>
       <div className="input-container w-[85vw] h-[40vh] md:h-[45vh] md:w-[50vw] card glow">
@@ -122,8 +132,8 @@ function App() {
           onClick={onclick}
           disabled={loading}
           className={`${
-            loading ? "bg-gray-400" : "bg-gray-100"
-          } text-black w-full flex items-center justify-center text-xl font-bold`}
+            loading ? "bg-gray-400" : "bg-gray-100 hover:bg-gray-300"
+          } text-black w-full  flex items-center justify-center text-xl font-bold`}
         >
           {loading ? (
             <RotatingLines
