@@ -66,11 +66,20 @@ const uploadFile = async (fileName, localFilePath) => {
 }
 
 const copyFinalDist = async (id) => {
-    const folderPath = path.join(__dirname, `output/${id}/build` || `output/${id}/dist`);
+    const buildPath = path.join(__dirname, `output/${id}/build`);
+    const distPath = path.join(__dirname, `output/${id}/dist`);
+    let folderPath;
+
+    if (fs.existsSync(buildPath)) {
+        folderPath = buildPath;
+    } else if (fs.existsSync(distPath)) {
+        folderPath = distPath;
+    }
     const allFiles = getAllFiles(folderPath);
     await Promise.all(allFiles.map(async (file) => {
         await uploadFile(`dist/${id}/` + file.slice(folderPath.length + 1), file);
     }));
+    
     console.log("All files uploaded successfully");
 };
 
