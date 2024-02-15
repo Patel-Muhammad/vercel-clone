@@ -42,7 +42,7 @@ app.post("/api/project", async (req, res) => {
   slug = slug.trim().toLowerCase();
 
   if (!validate(gitURL, slug)) {
-    res.status(400).json({
+    return res.status(400).json({
       status: "invalid",
       data: "Invalid input",
     });
