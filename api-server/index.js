@@ -13,7 +13,9 @@ const cstring = process.env.cstring;
 
 
 app.use(express.json());
-app.use(cors())
+app.use(cors({
+  origin: 'https://deployfor.me/',
+}))
 
 app.post("/api/project", async (req, res) => {
 
