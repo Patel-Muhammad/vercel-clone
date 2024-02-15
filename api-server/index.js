@@ -35,8 +35,8 @@ const validate = (url, domain) => {
 };
 
 app.post("/api/project", async (req, res) => {
-  const { gitURL, slug } = req.body;
-  const projectSlug = slug ? slug : generateSlug();
+  let { gitURL, slug } = req.body;
+  let projectSlug = slug ? slug : generateSlug();
 
   gitURL = gitURL.trim().toLowerCase();
   slug = slug.trim().toLowerCase();
